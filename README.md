@@ -4,9 +4,13 @@ This is an example repository of how to set up Payload CMS for content managemen
 
 The Payload instance is injected into Remix loaders and actions through request context. This way we are free to use the Payload Local API for data, user and authentication management, while avoiding payload having to be bundled together with the remix server build. With this setup you can even use the Payload Authentication middleware in your remix application.
 
+## Background
+
+Originally forked from [here](https://github.com/payloadcms/remix-server) major differences include migration from `pnpm` to `npm`.
+
 ## What's inside?
 
-This monorepo is using `pnpm` for package management. While it is an easy task to switch to `yarn` instead, setting this up with `npm` workspaces can be trickier. For monorepos we do recommend `pnpm` due to its ability to handle hoisting in a better way, which avoids dependency related issues.
+This monorepo is using `npm` for package management.
 
 ### Apps and Packages
 
@@ -27,16 +31,20 @@ This monorepo is using `pnpm` for package management. While it is an easy task t
 
 ## Setup
 
-Get started by running `pnpm install` from the root of the monorepo. Create a `/apps/server/.env.local` file based on `/apps/server/.env` and add your connection string to MongoDB as well as a secret for PayloadCMS to use in order to keep your data secure. `.env` will be loaded first, and then `.env.local`. That way you can keep your non-secret variables in the `.env` files which also is commited to git, and secret variables in `.env.local` that isn't commited to git.
+Get started by running `npm install` from the root of the monorepo. Create a `/apps/server/.env.local` file based on `/apps/server/.env` and add your connection string to MongoDB as well as a secret for PayloadCMS to use in order to keep your data secure. `.env` will be loaded first, and then `.env.local`. That way you can keep your non-secret variables in the `.env` files which also is commited to git, and secret variables in `.env.local` that isn't commited to git.
+
+- Navigate to [localhost:3000](http://localhost:3000) to view the Remix application
+- Click login or navigate to [localhost:3000/login](http://localhost:3000/login)
+- Login using username: `dev@payloadcms.com`, password: `qwerty`
 
 ### Develop
 
-To develop all apps and packages, run `pnpm run dev` from the root of the monorepo. This will start the express server that serves both the Remix and PayloadCMS applications.
+To develop all apps and packages, run `npm run dev` from the root of the monorepo. This will start the express server that serves both the Remix and PayloadCMS applications.
 When saving file changes in the `apps/cms` package, the running express server will restart in order for the Payload CMS configuration changes to take effect.
 Remix is reloaded without restarting the express server by purging the node `require()` cache of previously imported Remix files.
 
 ### Build
 
-To build all apps and packages, run `pnpm run build` from the root of the monorepo. Turborepo will take care of running the build scripts in order so that packages depending on other monorepo packages is built last.
+To build all apps and packages, run `npm run build` from the root of the monorepo. Turborepo will take care of running the build scripts in order so that packages depending on other monorepo packages is built last.
 
-If you want, serve your production build with `pnpm run serve` from the root of the monorepo.
+If you want, serve your production build with `npm run serve` from the root of the monorepo.

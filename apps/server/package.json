@@ -7,14 +7,14 @@
         "clean": "rm -rf node_modules build dist .turbo",
         "dev": "cross-env PAYLOAD_CONFIG_PATH=../cms/src/config.ts NODE_ENV=development nodemon",
         "build:server": "rm -rf dist/* && tsc",
-        "build": "pnpm build:server",
+        "build": "npm run build:server",
         "serve": "cross-env PAYLOAD_CONFIG_PATH=../cms/dist/config.js NODE_ENV=production node --conditions=serve dist/index.js",
         "lint": "eslint --ext .ts,.js ./src/index.ts"
     },
     "dependencies": {
-        "@org/cms": "workspace:*",
-        "@org/shared": "workspace:*",
-        "@org/web": "workspace:*",
+        "@org/cms": "*",
+        "@org/shared": "*",
+        "@org/web": "*",
         "express": "^4.18.2"
     },
     "devDependencies": {

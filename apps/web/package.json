@@ -21,7 +21,7 @@
         "lint": "eslint --ext .ts,.tsx,.js,.jsx ./app"
     },
     "dependencies": {
-        "@org/ui": "workspace:*",
+        "@org/ui": "*",
         "@remix-run/express": "^1.12.0",
         "@remix-run/node": "^1.12.0",
         "@remix-run/react": "^1.12.0",
@@ -31,7 +31,7 @@
         "slate": "^0.90.0"
     },
     "devDependencies": {
-        "@org/cms": "workspace:*",
+        "@org/cms": "*",
         "@remix-run/dev": "^1.12.0",
         "@remix-run/eslint-config": "^1.12.0",
         "@types/escape-html": "^1.0.2",
