@@ -1,110 +1,126 @@
-import React, { Fragment } from 'react';
+import { Text as BaseText } from 'slate';
+
 import escapeHTML from 'escape-html';
-import { Text } from 'slate';
 
-type RichTextProps = JSX.IntrinsicElements['div'] & {
-    content: any;
-};
+type Image = {
+  url: string;
+  alt: string;
+}
 
-const RichText = ({ className, content }: RichTextProps) => {
-    if (!content) {
-        return null;
-    }
-
-    return <div className={className}>{serialize(content)}</div>;
-};
-
-// eslint-disable-next-line no-use-before-define
-type Children = Leaf[];
+type Text = BaseText & {
+  bold?: boolean;
+  code?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+}
 
 type Leaf = {
-    type: string;
-    value?: {
-        url: string;
-        alt: string;
-    };
-    children?: Children;
-    url?: string;
-    [key: string]: unknown;
+  type: string;
+  url?: string;
+  value?: Image;
+  children?: (Leaf | Text)[];
 };
 
-const serialize = (children?: Children) =>
-    children?.map((node, i) => {
-        if (Text.isText(node)) {
-            let text = (
-                <span
-                    dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }}
-                />
-            );
+type RichTextProps = JSX.IntrinsicElements['div'] & {
+  content: Leaf[];
+};
 
-            if (node.bold) {
-                text = <strong key={i}>{text}</strong>;
-            }
+const handleText = (node: Text, index: number) => {
+  const inner = node.text;
 
-            if (node.code) {
-                text = <code key={i}>{text}</code>;
-            }
+  if (node.bold) {
+    return <strong key={index}>{inner}</strong>;
+  }
 
-            if (node.italic) {
-                text = <em key={i}>{text}</em>;
-            }
+  if (node.code) {
+    return <code key={index}>{inner}</code>
+  }
 
-            if (node.underline) {
-                text = (
-                    <span style={{ textDecoration: 'underline' }} key={i}>
-                        {text}
-                    </span>
-                );
-            }
+  if (node.italic) {
+    return <em key={index}>{inner}</em>;
+  }
 
-            if (node.strikethrough) {
-                text = (
-                    <span style={{ textDecoration: 'line-through' }} key={i}>
-                        {text}
-                    </span>
-                );
-            }
+  if (node.underline) {
+    return (
+      <span key={index} style={{ textDecoration: 'underline' }}>
+        {inner}
+      </span>
+    )
+  }
 
-            return <Fragment key={i}>{text}</Fragment>;
-        }
+  if (node.strikethrough) {
+    return (
+      <span key={index} style={{ textDecoration: 'line-through' }}>
+        {inner}
+      </span>
+    )
+  }
 
-        if (!node) {
-            return null;
-        }
+  return <span key={index}>{inner}</span>;
+}
 
-        switch (node.type) {
-            case 'h1':
-                return <h1 key={i}>{serialize(node.children)}</h1>;
-            case 'h2':
-                return <h2 key={i}>{serialize(node.children)}</h2>;
-            case 'h3':
-                return <h3 key={i}>{serialize(node.children)}</h3>;
-            case 'h4':
-                return <h4 key={i}>{serialize(node.children)}</h4>;
-            case 'h5':
-                return <h5 key={i}>{serialize(node.children)}</h5>;
-            case 'h6':
-                return <h6 key={i}>{serialize(node.children)}</h6>;
-            case 'quote':
-                return (
-                    <blockquote key={i}>{serialize(node.children)}</blockquote>
-                );
-            case 'ul':
-                return <ul key={i}>{serialize(node.children)}</ul>;
-            case 'ol':
-                return <ol key={i}>{serialize(node.children)}</ol>;
-            case 'li':
-                return <li key={i}>{serialize(node.children)}</li>;
-            case 'link':
-                return (
-                    <a href={escapeHTML(node.url)} key={i}>
-                        {serialize(node.children)}
-                    </a>
-                );
+const handleElement = (node: Leaf, index: number) => {
+  if (node.type === 'h1') {
+    return <h1 key={index}>{serialize(node.children)}</h1>;
+  }
+  if (node.type === 'h2') {
+    return <h2 key={index}>{serialize(node.children)}</h2>;
+  }
+  if (node.type === 'h3') {
+    return <h3 key={index}>{serialize(node.children)}</h3>;
+  }
+  if (node.type === 'h4') {
+    return <h4 key={index}>{serialize(node.children)}</h4>;
+  }
+  if (node.type === 'h5') {
+    return <h5 key={index}>{serialize(node.children)}</h5>;
+  }
+  if (node.type === 'h6') {
+    return <h6 key={index}>{serialize(node.children)}</h6>;
+  }
+  if (node.type === 'quote') {
+    return <blockquote key={index}>{serialize(node.children)}</blockquote>
+  }
+  if (node.type === 'ul') {
+    return <ul key={index}>{serialize(node.children)}</ul>;
+  }
+  if (node.type === 'ol') {
+    return <ol key={index}>{serialize(node.children)}</ol>;
+  }
+  if (node.type === 'li') {
+    return <li key={index}>{serialize(node.children)}</li>;
+  }
+  if (node.type === 'link') {
+    return (
+      <a key={index} href={escapeHTML(node.url)}>
+        {serialize(node.children)}
+      </a>
+    );
+  }
 
-            default:
-                return <p key={i}>{serialize(node.children)}</p>;
-        }
-    });
+  return <p key={index}>{serialize(node.children)}</p>;
+}
+
+const serialize = (children?: (Leaf | Text)[]) => {
+  if (children === undefined) {
+    return null;
+  }
+  
+  const nodes = children
+    .map((node, index) => BaseText.isText(node)
+      ? handleText(node, index)
+      : handleElement(node, index));
+
+  return nodes;
+}
+
+const RichText = ({ className, content }: RichTextProps) => {
+  if (!content) {
+    return null;
+  }
+
+  return <div className={className}>{serialize(content)}</div>;
+};
 
 export { RichText };
