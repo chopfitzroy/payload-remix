@@ -6,6 +6,7 @@ module.exports = {
   serverDependenciesToBundle: ['@org/ui'],
   watchPaths: ['../../packages/ui', '../../packages/shared'],
   future: {
+    v2_errorBoundary: true,
     v2_routeConvention: true,
   },
 };
