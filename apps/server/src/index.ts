@@ -1,14 +1,11 @@
-import path = require('path');
-import fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
-import express = require('express');
-import cms = require('@org/cms');
-import shared = require('@org/shared');
-import webExpressAdapter = require('@org/web/express');
+import express from 'express';
 
-const { payload } = cms;
-const { dotenv } = shared;
-const { createRequestHandler } = webExpressAdapter;
+import { dotenv } from '@org/shared';
+import { payload } from '@org/cms';
+import { createRequestHandler } from '@remix-run/express';
 
 // Loading environment variables, .env > .env.local
 const config = dotenv.config();

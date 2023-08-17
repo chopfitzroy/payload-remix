@@ -1,14 +1,14 @@
 /** @type {import('@remix-run/dev').AppConfig} */
-module.exports = {
-  ignoredRouteFiles: ['**/.*'],
-  assetsBuildDirectory: 'public/web/build',
-  publicPath: '/web/build/',
-  serverDependenciesToBundle: ['@org/ui'],
-  watchPaths: ['../../packages/ui', '../../packages/shared'],
-  future: {
+export default {  future: {
     v2_headers: true,
     v2_errorBoundary: true,
     v2_routeConvention: true,
     v2_normalizeFormMethod: true,
   },
+  publicPath: '/web/build/',
+  watchPaths: ['../../packages/ui', '../../packages/shared'],
+  ignoredRouteFiles: ['**/.*'],
+  serverModuleFormat: "esm",
+  assetsBuildDirectory: 'public/web/build',
+  serverDependenciesToBundle: ['@org/ui'],
 };

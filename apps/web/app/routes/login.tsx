@@ -15,6 +15,7 @@ export const action: ActionFunction = async ({
     const form = await request.formData();
     const email = form.get('email');
     const password = form.get('password');
+
     if (typeof email !== 'string' || typeof password !== 'string') {
         return new Response('You must provide both a email and a password', {
             status: 401,
