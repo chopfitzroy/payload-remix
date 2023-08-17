@@ -1,9 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 
+import dotenv from 'dotenv';
 import express from 'express';
 
-import { dotenv } from '@org/shared';
 import { payload } from '@org/cms';
 import { createRequestHandler } from '@remix-run/express';
 
