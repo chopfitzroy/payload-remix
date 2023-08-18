@@ -2,8 +2,8 @@ import type { Page, User } from '@org/cms';
 import type {
   LinksFunction,
   LoaderFunction,
-  MetaFunction,
   TypedResponse,
+  V2_MetaFunction,
 } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import {
@@ -18,11 +18,17 @@ import {
 import uiStyles from '@org/ui/styles.css';
 import styles from './styles/global.css';
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'Payload CMS & Remix Monorepo',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: V2_MetaFunction = () => ([
+  {
+    charset: 'utf-8',
+  },
+  {
+    title: 'Payload CMS & Remix Monorepo',
+  },
+  {
+    viewport: 'width=device-width,initial-scale=1',
+  }
+]);
 
 export const links: LinksFunction = () => [
   {
