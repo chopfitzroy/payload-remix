@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "ext": "ts",
+    "exec": "node --require tsm src/index.ts",
+    "watch": ["./src/index.ts", "../cms/src"]
+}
