@@ -48,3 +48,11 @@ Remix is reloaded without restarting the express server by purging the node `req
 To build all apps and packages, run `npm run build` from the root of the monorepo. Turborepo will take care of running the build scripts in order so that packages depending on other monorepo packages is built last.
 
 If you want, serve your production build with `npm run serve` from the root of the monorepo.
+
+## Notes
+
+### Using `tsx` to compile `express` server
+
+Unfortunately because of [tsx#113](https://github.com/esbuild-kit/tsx/issues/113) we can't currently use it to compile the express server.
+
+In the iterim [`tsm`](https://github.com/lukeed/tsm) is working fine with [`nodemon`](https://github.com/remy/nodemon).
