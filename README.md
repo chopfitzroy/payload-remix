@@ -6,7 +6,12 @@ The Payload instance is injected into Remix loaders and actions through request 
 
 ## Background
 
-Originally forked from [here](https://github.com/payloadcms/remix-server) major differences include migration from `pnpm` to `npm`.
+Originally forked from [here](https://github.com/payloadcms/remix-server) major differences include:
+
+- Migration from `pnpm` to `npm`
+- Enabling `esm` module format
+- Updating Remix to `v2` conventions
+- Migration from `ts-node` to `tsm` for express server compilation
 
 ## What's inside?
 
@@ -18,7 +23,6 @@ This monorepo is using `npm` for package management.
 -   `/apps/web`: a [Remix](https://remix.run/) application, which will act as our frontend
 -   `/apps/server`: a [ExpressJS](https://expressjs.com/) application that ties all our middleware, static file serving and routing needs together
 -   `/packages/ui`: a stub React component library shared by both `web` and `cms` applications
--   `/packages/shared`: a package that all out apps use that contains shared dependencies, in order to reduce bundle sizes
 -   `/packages/eslint-config-custom`: `eslint` configurations
 
 ### Utilities
