@@ -1,5 +1,5 @@
 {
-    "name": "@org/web",
+    "name": "web",
     "version": "1.0.0",
     "sideEffects": false,
     "license": "MIT",
@@ -22,7 +22,7 @@
         "lint": "eslint --ext .ts,.tsx,.js,.jsx ./app"
     },
     "dependencies": {
-        "@org/ui": "*",
+        "ui": "*",
         "@remix-run/express": "^1.19.3",
         "@remix-run/node": "^1.19.3",
         "@remix-run/react": "^1.19.3",
@@ -32,7 +32,7 @@
         "slate": "^0.90.0"
     },
     "devDependencies": {
-        "@org/cms": "*",
+        "cms": "*",
         "@remix-run/dev": "^1.19.3",
         "@remix-run/eslint-config": "^1.19.3",
         "@types/escape-html": "^1.0.2",

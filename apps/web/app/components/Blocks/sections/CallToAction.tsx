@@ -1,4 +1,4 @@
-import type { Page } from '@org/cms';
+import type { Page } from 'cms';
 import { Link } from '@remix-run/react';
 import { RichText } from '../RichText';
 

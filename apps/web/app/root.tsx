@@ -1,4 +1,4 @@
-import type { Page, User } from '@org/cms';
+import type { Page, User } from 'cms';
 import type {
   LinksFunction,
   LoaderFunction,
@@ -15,7 +15,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 
-import uiStyles from '@org/ui/styles.css';
+import uiStyles from 'ui/styles.css';
 import styles from './styles/global.css';
 
 export const meta: V2_MetaFunction = () => ([

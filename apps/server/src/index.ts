@@ -4,7 +4,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import express from 'express';
 
-import { payload } from '@org/cms';
+import { payload } from 'cms';
 import { createRequestHandler } from '@remix-run/express';
 
 // Loading environment variables, .env > .env.local

@@ -11,6 +11,7 @@ Originally forked from [here](https://github.com/payloadcms/remix-server) major 
 - Migration from `pnpm` to `npm`
 - Enabling `esm` module format
 - Updating Remix to `v2` conventions
+- Remove `@org/` prefix from packages
 - Migration from `ts-node` to `tsm` for express server compilation
 
 ## What's inside?

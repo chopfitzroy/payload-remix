@@ -1,5 +1,5 @@
 {
-    "name": "@org/remix-server",
+    "name": "remix-server",
     "version": "1.0.0",
     "license": "MIT",
     "workspaces": [
@@ -15,7 +15,7 @@
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },
     "devDependencies": {
-        "@org/eslint-config": "*",
+        "eslint-config": "*",
         "prettier": "^2.8.4",
         "turbo": "^1.7.4",
         "typescript": "^4.9.5"

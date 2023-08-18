@@ -1,5 +1,5 @@
 {
-    "name": "@org/server",
+    "name": "server",
     "description": "Server for running several web applications",
     "version": "1.0.0",
     "license": "MIT",
@@ -12,9 +12,8 @@
         "lint": "eslint --ext .ts,.js ./src/index.ts"
     },
     "dependencies": {
-        "@org/cms": "*",
-        "@org/shared": "*",
-        "@org/web": "*",
+        "cms": "*",
+        "web": "*",
         "dotenv": "^16.3.1",
         "express": "^4.18.2"
     },

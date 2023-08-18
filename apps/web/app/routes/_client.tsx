@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useMatches } from '@remix-run/react';
-import { Button } from '@org/ui';
+import { Button } from 'ui';
 import { Logo } from '~/components/Logo';
 import type { RootLoaderData } from '~/root';
 

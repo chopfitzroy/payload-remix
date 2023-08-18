@@ -1,4 +1,4 @@
-import type { PayloadRequest } from '@org/cms/types';
+import type { PayloadRequest } from 'cms/types';
 import type { ServerBuild } from "@remix-run/node";
 
 export type GetLoadContextFunction = (req: PayloadRequest, res: Express.Response) => RemixRequestContext;

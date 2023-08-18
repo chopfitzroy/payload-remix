@@ -1,4 +1,4 @@
 module.exports = {
-    extends: ['@org/eslint-config'],
+    extends: ['eslint-config'],
     root: true
 };

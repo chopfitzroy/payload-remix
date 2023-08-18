@@ -2,7 +2,7 @@
 /// <reference types="@remix-run/node/globals" />
 
 import type { Response } from 'express';
-import type { Payload, User } from '@org/cms';
+import type { Payload, User } from 'cms';
 
 export interface RemixRequestContext {
     payload: Payload;

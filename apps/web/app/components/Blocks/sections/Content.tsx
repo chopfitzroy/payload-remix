@@ -1,4 +1,4 @@
-import type { Page } from '@org/cms';
+import type { Page } from 'cms';
 import { RichText } from '../RichText';
 
 type ContentTypeProps = Page['layout'][0];

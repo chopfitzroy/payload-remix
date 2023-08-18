@@ -11,5 +11,5 @@ export default {  future: {
   ignoredRouteFiles: ['**/.*'],
   serverModuleFormat: "esm",
   assetsBuildDirectory: 'public/web/build',
-  serverDependenciesToBundle: ['@org/ui'],
+  serverDependenciesToBundle: ['ui'],
 };
